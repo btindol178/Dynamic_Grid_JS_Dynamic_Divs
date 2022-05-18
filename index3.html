@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css3.css">
+    <link rel="stylesheet" href="./fontawesome">
+</head>
+<body>
+    <div class="container">
+        <div class="buttons">
+          <div class="list"><i class="fa fa-list"></i></div>
+          <div class="grid"><i class="fa fa-th-large"></i></div>
+        </div>
+        <div class="wrapper" id="wrapper">
+          <div class="col">Column #1</div>
+          <div class="col">Column #2</div>
+          <div class="col">Column #3</div>
+          <div class="col">Column #4</div>
+        </div>
+      </div>
+<script>
+var wrapper = document.getElementById("wrapper");
+
+    document.addEventListener("click", function (event) {
+      if (!event.target.matches(".list")) return;
+    
+      // List view
+      event.preventDefault();
+      wrapper.classList.add("list");
+    });
+    
+    document.addEventListener("click", function (event) {
+      if (!event.target.matches(".grid")) return;
+    
+      // List view
+      event.preventDefault();
+      wrapper.classList.remove("list");
+    });</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+
+}
+
+.parent {
+  
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.child {
+  flex: 0 30%;
+  min-width: 12rem;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.child-content {
+  background-color: yellow;
+  border: 1px solid black;
+  height: 200px;
+}
