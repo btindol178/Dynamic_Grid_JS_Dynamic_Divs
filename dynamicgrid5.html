@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css7.css">
+</head>
+<body>
+    <button id = "view1" type="button">Click Me!</button>
+    <button id = "view2" type="button">Click Me!</button>
+    <div id = "code"></div>
+    <script language="javascript"> 
+          v = 6; // pre declaring the number of grid elements
+          var e = document.body; //get the entire doecument body
+          console.log("E is: ",e)
+          for(var i = 0; i < 1; i++){ // for i in length through only one parent container to hold many individual containers
+            var row = document.createElement("div");  // create a parent dive
+            row.className = "parent";   // call the class parent 
+            for(var x = 1; x <= v; x++){  // for 1 through 6 or (V) Iterate
+                var cell = document.createElement("div");  // create a new div
+                cell.className = "child"; // make the divs class child
+                cell.id = 'id_' + x; // make the id concatenated with the iteration step
+                cell.innerText = (i * v) + x; // this prints out the numbers in the divs. 
+                row.appendChild(cell); // append that to the div
+            } 
+            e.appendChild(row); // append to the document body 
+          } 
+      </script> 
+      <script src="hello_world2.js">// script for adding event listener </script> 
+</body>
+</html>
