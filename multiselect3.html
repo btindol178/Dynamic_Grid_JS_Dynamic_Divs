@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select class="filterTags" id="filterDepartment">
+        <option>All</option>
+        <option>IT</option>
+        <option>Marketing</option>
+      </select>
+  
+      <select class="filterTags" id="filterLocation">
+        <option>All</option>
+        <option>New York</option>
+        <option>Washington</option>
+      </select>
+  
+      <div class="tags-container">
+       <div class="tags tags-departments">
+         <span class="department tag">IT</span>
+         <span class="department tag">Marketing</span>
+       </div>
+       <div class="tags tags-locations">
+         <span class="location tag">New York</span>
+         <span class="location tag">Washington</span>
+       </div>
+     </div>
+
+
+<script>
+    //Iterate the selection elements and add the function to the 'change' event
+sels = document.getElementsByTagName('select');
+console.log("the select dropdown is: ",sels)
+ for(i=0; i<sels.length; i++) 
+ {
+  sels[i].addEventListener('change', function() {
+     //get the selection id of the selected that was change - this returns the selection element
+     selectionID = this.id;
+     if(selectionID === "filterDepartment")
+     {
+         //the value of the selected department
+         var selectedDepartment = document.getElementById("filterDepartment").value
+         //we will iterate the departments spans and check their text value agains the selected department value (or if the value is 'All' we dont need to check//
+         var spans = document.getElementsByClassName('tags tags-departments')[0].getElementsByTagName('span'); 
+         for(var i = 0; i < spans.length; i++)
+         {
+             if(selectedDepartment == "All" || spans[i].innerText == selectedDepartment)
+             {
+                 spans[i].style.display = "block";
+             }
+             else
+             {
+                 spans[i].style.display = "none";
+             }
+         }
+     }
+
+     if(selectionID === "filterLocation")
+     {
+         var selectedLocation = document.getElementById("filterLocation").value;
+         var spans = document.getElementsByClassName('tags tags-locations')[0].getElementsByTagName('span');
+         for(var i = 0; i < spans.length; i++)
+         {
+             if(selectedLocation == "All" || spans[i].innerText == selectedLocation)
+             {
+                spans[i].style.display = "block";
+             }
+             else
+             {
+                spans[i].style.display = "none";
+             }
+         }
+     }
+  }, false);}</script>
+</body>
+</html>

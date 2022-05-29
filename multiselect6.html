@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css7.css">
+</head>
+<body>
+    <select id="select-div-number" multiple="multiple">
+        <option value="id_1" selected>Div 1</option>
+        <option value="id_2" selected>Div 2</option>
+        <option value="id_3" selected>Div 3</option>
+        <option value="id_4" selected>Div 4</option>
+        <option value="id_5" selected>Div 5</option>
+        <option value="id_6" selected>Div 6</option>
+
+    </select>
+    <button name="order" id="order">
+        Order Now
+      </button>
+    <button id = "view1" type="button">Click Me!</button>
+    <button id = "view2" type="button">Click Me!</button>
+    <div id = "code"></div>
+    <script language="javascript"> 
+          v = 6; // pre declaring the number of grid elements
+          var e = document.body; //get the entire doecument body
+          console.log("E is: ",e)
+          for(var i = 0; i < 1; i++){ // for i in length through only one parent container to hold many individual containers
+            var row = document.createElement("div");  // create a parent dive
+            row.className = "parent";   // call the class parent 
+            for(var x = 1; x <= v; x++){  // for 1 through 6 or (V) Iterate
+                var cell = document.createElement("div");  // create a new div
+                cell.className = "child"; // make the divs class child
+                cell.id = 'id_' + x; // make the id concatenated with the iteration step
+                cell.innerText = (i * v) + x; // this prints out the numbers in the divs. 
+                cell.style += "block"
+                row.appendChild(cell); // append that to the div
+            } 
+            e.appendChild(row); // append to the document body 
+          } 
+      </script> 
+      <script>
+          sels = document.getElementsByTagName('select');
+          console.log("The select option: ",sels)
+          let orderButton = document.getElementById("order");
+
+          orderButton.addEventListener("click", function() {
+          var options = document.getElementById('select-div-number').selectedOptions;
+          var values = Array.from(options).map(({ value }) => value);
+          console.log("The values are: ",values);
+          
+          // get the classes there are 2 for 2 grid views child and child 2 
+          var child_divs = document.getElementsByClassName('child')
+          console.log("Child class is: ",child_divs)
+          var child2_divs = document.getElementsByClassName('child2')
+          console.log("Child2 class is: ",child2_divs)
+
+          // if the toggle view is on the first child div grid view then 
+          if(child_divs.length !== 0){
+         
+            b = values.length;
+            l = child_divs.length;
+            for(a = 0; a < b; a++) {
+                console.log("Child div is: ",child_divs[a].id)
+                for(i = 0; i < l; i++) {
+                    console.log("Value i is: ", values[i])
+                    //console.log("outter loop iteration is: ",a, " Selected value is: " b, "Inner loop iteration is: " i, "inner loop length: " l);
+                    if(child_divs[a].id == values[i]){
+                        console.log("Match!",child_divs[a].id, " == ", values[i])
+                        console.log("Child div style (a)   : ",child_divs[a])
+                        console.log("Child div style (i)   : ",child_divs[i])
+                        console.log("Value (a)   : ",values[a])
+                        console.log("Value (i)     : ",values[i])
+                        child_divs[a].style.display = "block"
+                    } else {
+                        //child_divs[a].style.display = "none"
+                        continue;
+                    }
+                    child_divs[a].style.display = "none"
+                }
+                i = 0;
+            }  
+
+          }
+          
+        }, false);
+
+      </script>
+  
+      <script src="hello_world2.js">// script for adding event listener </script> 
+</body>
+</html>
